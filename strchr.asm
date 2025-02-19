@@ -1,3 +1,12 @@
+;| Argument | Registre |
+;| -------- | -------- |
+;| 1er      |  rdi     |
+;| 2ème     |  rsi     |
+;| 3ème     |  rdx     |
+;| 4ème     |  rcx     |
+;| 5ème     |  r8      |
+;| 6ème     |  r9      |
+
 section .text
     global strchr
 
