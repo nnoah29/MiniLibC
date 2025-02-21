@@ -7,14 +7,12 @@ section .text
 ; n -> rdx;
 
 memcpy:
-.Loop:
-    test rdx, rdx ; if n == 0
+    test rdx, rdx
     je .oki
-    mov al, [rsi]
-    mov [rdi], al
-    inc rdi ; *dest++
-    inc rsi ; *src++
-    dec rdx ; n--
-    jnz .Loop
+
+    mov rcx, rdx       ; Charger n dans rcx
+    rep movsb          ; Copier rcx octets de [rsi] à [rdi]
+
 .oki:
     ret
+

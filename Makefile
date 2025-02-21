@@ -1,10 +1,8 @@
 
-NAME = libstrlen.so
+NAME = libasm.so
 OBJ = *.o
 
-all: $(NAME)
-
-$(NAME):
+all:
 	nasm -f elf64 memcpy.asm
 	nasm -f elf64 memmove.asm
 	nasm -f elf64 memset.asm

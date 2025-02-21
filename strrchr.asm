@@ -6,11 +6,11 @@ strrchr:
     mov rdx, rdi
     mov bl, sil
 .Loop:
-    cmp byte [rdx], bl
-    jne .Next
-
     cmp byte [rdx], 0
     je .End
+
+    cmp byte [rdx], bl
+    jne .Next
 
     mov rax, rdx
 .Next:

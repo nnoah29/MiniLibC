@@ -6,20 +6,28 @@ section .text
 ; str2 -> rsi
 ; n -> rdx
 strncmp:
+
 .Loop:
+    cmp rdx, 0
+    je .End
     mov al, [rdi]
     mov dl, [rsi]
     cmp al, dl
-    je .Equal
-    jg .Sup
-    jl .Inf
-.Equal:
-    cmp byte [rdi], 0
+    jne .Diff
+
+    cmp al, 0
     je .End
+
     inc rdi
     inc rsi
     dec rdx
     jnz .Loop
+
+.Diff:
+    cmp al, dl
+    jg .Sup
+    jl .Inf
+
 .Sup:
     mov rax, 1
     ret
