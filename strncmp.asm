@@ -8,15 +8,14 @@ section .text
 strncmp:
 
 .Loop:
-    cmp rdx, 0
-    je .End
     mov al, [rdi]
-    mov dl, [rsi]
-    cmp al, dl
+    mov bl, [rsi]
+
+    cmp al, bl
     jne .Diff
 
-    cmp al, 0
-    je .End
+    test al, al
+    jz .End
 
     inc rdi
     inc rsi
@@ -24,9 +23,9 @@ strncmp:
     jnz .Loop
 
 .Diff:
-    cmp al, dl
-    jg .Sup
-    jl .Inf
+    sub al, bl
+    movsx rax, al
+    ret
 
 .Sup:
     mov rax, 1
